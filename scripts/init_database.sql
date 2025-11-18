@@ -14,7 +14,6 @@ GO
 
 IF EXISTS(SELECT 1 FROM sys.databases WHERE name ='DataWarehouse')
 BEGIN
-  ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE; /* ROOLBACK IMMEDIATE คือคำสั่งเตะผู้ใช้งานทั้งหมดที่กำลังเชื่อมต่อออกทันทีและ rollback ทุก transaction ที่ยังไม่ commit */
   DROP DATABASE DataWarehouse;
 END;
 GO
