@@ -44,6 +44,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -62,6 +63,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -79,6 +81,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -97,6 +100,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -118,6 +122,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -136,6 +141,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -154,6 +160,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -176,6 +183,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -194,6 +202,7 @@ DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @b
 			FIELDTERMINATOR = ',',
 			ROWTERMINATOR = '0x0a',
 			FORMAT = 'CSV',
+			CODEPAGE = '65001',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
