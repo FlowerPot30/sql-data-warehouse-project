@@ -31,7 +31,7 @@ WHERE customer_id IS NULL
 -- Expectation: customer_zip_code_prefix must contain exactly 5 characters
 SELECT *
 FROM bronze.crm_customers
-WHERE LEN(customer_zip_code_prefix) != 5; 
+WHERE LEN(TRIM(customer_zip_code_prefix)) != 5; 
 
 -- Check zip code format
 -- Expectation: customer_zip_code_prefix must contain only numeric characters
@@ -43,5 +43,5 @@ WHERE customer_zip_code_prefix LIKE '%[^0-9]%';
 -- Expectation: customer_state must be a 2-character uppercase alphabetic code
 SELECT *
 FROM bronze.crm_customers
-WHERE LEN(customer_state) != 2
-	OR customer_state LIKE '%[^A-Z]%';
+WHERE LEN(TRIM(customer_state)) != 2
+	OR UPPER(customer_state) LIKE '%[^A-Z]%';
