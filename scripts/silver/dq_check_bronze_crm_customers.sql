@@ -12,7 +12,7 @@ WHERE customer_id != TRIM(customer_id)
 	OR customer_zip_code_prefix != TRIM(customer_zip_code_prefix)
 	OR customer_city != TRIM(customer_city)
 	OR customer_state != TRIM(customer_state);
-	
+
 -- Check for duplicate customer_id values
 -- Expectation: customer_id should be unique
 SELECT customer_id
@@ -39,9 +39,19 @@ SELECT *
 FROM bronze.crm_customers
 WHERE customer_zip_code_prefix LIKE '%[^0-9]%';
 
+-- Check customer city format
+-- Expectation: customer_city
+SELECT customer_city
+FROM bronze.crm_customers
+WHERE customer_city LIKE '%[^A-Z ]%';
+-- Result show that there are row that contain special character 
+-- We will solve this problem by using COLATE when import this data to silver table
+
 -- Check customer state format
 -- Expectation: customer_state must be a 2-character uppercase alphabetic code
 SELECT *
 FROM bronze.crm_customers
 WHERE LEN(TRIM(customer_state)) != 2
 	OR UPPER(customer_state) LIKE '%[^A-Z]%';
+
+
