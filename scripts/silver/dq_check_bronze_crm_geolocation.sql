@@ -25,13 +25,14 @@ FROM bronze.crm_geolocation
 WHERE geolocation_lat NOT BETWEEN -90 AND 90
 	OR geolocation_lng NOT BETWEEN -180 AND 180
 
--- Check geolocation city format
+-- Check for suspicious characters in city (allow letters incl. diacritics, digits, space, hyphen, apostrophe)
 -- Expectation: geolocation_city allowed to have only specific letter
-SELECT UPPER(geolocation_city)
+SELECT *
 FROM bronze.crm_geolocation
-WHERE UPPER(TRIM(geolocation_city)) LIKE '%[^A-Z -'']%'
+WHERE geolocation_city IS NOT NULL
+  AND geolocation_city LIKE '%[^A-Z ]%';
 -- Result show that there are row that contain special character 
--- We will solve this problem by using COLLATE when import this data to silver table
+-- We will solve this problem by using COLATE when import this data to silver table
 
 -- Check geolocation state format
 -- Expectation: geolocation_state must be a 2-character uppercase alphabetic code
@@ -40,9 +41,9 @@ FROM bronze.crm_geolocation
 WHERE LEN(TRIM(geolocation_state)) != 2
 	OR UPPER(geolocation_state) LIKE '%[^A-Z]%';
 
--- Check for duplicate customer_id values
--- Expectation: geolocation_zip_code_prefix should be unique
-SELECT geolocation_zip_code_prefix, COUNT(*) AS duplicated_amount
+-- Check for duplicate geolocation_zip_code_prefix values
+-- Expectation: Since real Brazilian postal codes have 8 digits, but the dataset truncates the last 3 digits,
+-- hence the geolocation_zip_code_prefix values are therefore allowed to have duplicates.
+SELECT geolocation_zip_code_prefix, COUNT(*)
 FROM bronze.crm_geolocation
 GROUP BY geolocation_zip_code_prefix
-HAVING COUNT(*) > 1;
