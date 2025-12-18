@@ -52,7 +52,7 @@ IF OBJECT_ID('bronze.crm_sellers', 'U') IS NOT NULL
 GO
 CREATE TABLE bronze.crm_sellers (
 	seller_id VARCHAR(50),
-	seller_zip_code_prefix INT,
+	seller_zip_code_prefix VARCHAR(50),
 	seller_city VARCHAR(50),
 	seller_state VARCHAR(5)
 );
