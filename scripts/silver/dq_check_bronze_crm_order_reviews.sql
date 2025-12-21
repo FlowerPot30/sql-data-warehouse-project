@@ -3,8 +3,6 @@
 -- Expectation: All queries should return zero rows
 -- =========================================================
 
-SELECT * FROM bronze.crm_order_reviews
-
 -- Check Unwanted Spaces in review_id, order_id, review_comment_title and review_comment_message columns
 -- Expectation: No records should contain unwanted spaces
 SELECT review_id
@@ -43,4 +41,3 @@ SELECT review_comment_title, review_comment_message
 FROM bronze.crm_order_reviews
 WHERE review_comment_message = '' OR review_comment_title = '';
 --> There are empty rows in both review_comment_title and review_comment_message
-
