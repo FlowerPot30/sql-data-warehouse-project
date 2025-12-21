@@ -31,3 +31,7 @@ SELECT
 	review_answer_timestamp
 FROM bronze.crm_order_reviews
 
+SELECT 
+	LOWER(product_category_name) AS product_category_name,
+	LOWER(product_category_name_english) AS product_category_name_english
+FROM bronze.erp_category_name_translation;
