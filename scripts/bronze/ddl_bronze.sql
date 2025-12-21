@@ -87,7 +87,7 @@ IF OBJECT_ID('bronze.erp_products', 'U') IS NOT NULL
 GO
 CREATE TABLE bronze.erp_products (
 	product_id VARCHAR(50),
-	perfumaria VARCHAR(50),
+	product_category_name VARCHAR(50),
 	product_name_lenght INT,
 	product_description_lenght INT,
 	product_photos_qty INT,
