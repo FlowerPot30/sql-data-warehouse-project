@@ -113,20 +113,49 @@ SELECT
     product_length_cm,
     product_height_cm,
     product_width_cm,
+    -- product name category flag
     CASE 
         WHEN product_category_name IS NULL 
-        THEN 1 ELSE 0
+        THEN 1
+        ELSE 0
     END AS is_missing_category,
+
+    -- product name length flag
     CASE 
         WHEN product_name_length IS NULL
-        THEN 1 ELSE 0
+        THEN 1
+        ELSE 0
     END AS is_missing_product_length,
+
+    -- product description length flag
     CASE 
         WHEN product_description_length IS NULL
-        THEN 1 ELSE 0
+        THEN 1
+        ELSE 0
     END AS is_missing_product_desription_length,
+
+    -- product photos quantity flag
     CASE 
         WHEN product_photos_qty IS NULL
-        THEN 1 ELSE 0
+        THEN 1
+        ELSE 0
     END AS is_missing_product_qty
-FROM bronze.erp_products
+FROM bronze.erp_products;
+
+SELECT 
+	order_id,
+	order_item_id,
+	product_id,
+	seller_id,
+	shipping_limit_date,
+	price,
+	freight_value
+FROM bronze.oms_order_items;
+
+SELECT	
+	order_id,
+	payment_sequential,
+	payment_type,
+	payment_installments,
+	payment_value
+FROM bronze.oms_order_payments
