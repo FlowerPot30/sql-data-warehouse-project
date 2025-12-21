@@ -3,8 +3,6 @@
 -- Expectation: All queries should return zero rows
 -- =========================================================
 
-SELECT * FROM bronze.oms_order_items;
-
 -- Check Unwanted spaces
 -- Expectation: No records should contain unwanted spaces
 SELECT * 
