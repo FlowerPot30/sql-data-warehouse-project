@@ -101,4 +101,32 @@ SELECT
              AND order_delivered_customer_date < order_delivered_carrier_date)
         THEN 1 ELSE 0
     END AS has_anomaly
-FROM bronze.erp_orders
+FROM bronze.erp_orders;
+
+SELECT 
+    product_id,
+    product_category_name,
+    product_name_length,
+    product_description_length,
+    product_photos_qty,
+    product_weight_g,
+    product_length_cm,
+    product_height_cm,
+    product_width_cm,
+    CASE 
+        WHEN product_category_name IS NULL 
+        THEN 1 ELSE 0
+    END AS is_missing_category,
+    CASE 
+        WHEN product_name_length IS NULL
+        THEN 1 ELSE 0
+    END AS is_missing_product_length,
+    CASE 
+        WHEN product_description_length IS NULL
+        THEN 1 ELSE 0
+    END AS is_missing_product_desription_length,
+    CASE 
+        WHEN product_photos_qty IS NULL
+        THEN 1 ELSE 0
+    END AS is_missing_product_qty
+FROM bronze.erp_products
